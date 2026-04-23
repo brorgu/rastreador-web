@@ -4,8 +4,8 @@ from bs4 import BeautifulSoup
 import re
 import os
 from dotenv import load_dotenv
-#import xmltodict
 import csv
+import time
 
 #brand_dict = {}
 load_dotenv()
@@ -98,8 +98,17 @@ def csvwriter(product):
 number_of_products = len(products_clean_text)
 print("number of products " + str(number_of_products))
 
-cprice = productcrawler(products_clean_text[6900])
-csvwriter(cprice)
+for index in range(number_of_products):
+    product_crawler = productcrawler(products_clean_text[index])
+    csvwriter(product_crawler)
+    print(product_crawler)
+    # DoS protection
+    print("wait started..")
+    time.sleep(1)
+    print("sleep ended")
 
-cprice = productcrawler(products_clean_text[500])
-csvwriter(cprice)
+# small test run
+#cprice = productcrawler(products_clean_text[6900])
+#csvwriter(cprice)
+#cprice = productcrawler(products_clean_text[500])
+#csvwriter(cprice)
