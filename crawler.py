@@ -26,7 +26,7 @@ products_clean_text = []
 sitemap_response = requests.get(sitemap)
 soup = BeautifulSoup(sitemap_response.content, "xml")
 #print(soup)
-product_maps = soup.find_all('loc', string=re.compile("products"))
+product_maps = soup.find_all('loc', string=re.compile("product"))
 for index, product in enumerate(product_maps):
     maps_clean_text.append(product_maps[index].get_text())
 
@@ -51,13 +51,12 @@ for product_map_index in range(list_len_maps):
         #print(products_clean_text[index])
         #print(index)
 
-print(len(products_clean_text))
-print("produkt url nr 6900 " + products_clean_text[6900])
-print("produkt url nr 500 " + products_clean_text[500])
+# small debug print
+#print(len(products_clean_text))
+#print("produkt url nr 6900 " + products_clean_text[6900])
+#print("produkt url nr 500 " + products_clean_text[500])
 #print(products_clean_text)
 
-product2url = "https://oda.com/no/products/69298-rema-1000-kubbelys-til-17-mai-4-8-x-10-cm/"
-#print(product2url)
 
 def productcrawler(url):
     headers = {"User-Agent": "Mozilla/5.0"}
