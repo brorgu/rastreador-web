@@ -12,3 +12,5 @@ Configuration in .env:
 
 Set base url for the crawler
 BASE_URL=https://example.com
+
+Crawler output in products.csv
