@@ -85,14 +85,14 @@ def productcrawler(url):
     else:
         print("No product found")
 
-    product_comp = product_name + "; " +price
+    product_comp = [product_name, price]
     #print(product_comp)
     return product_comp
 
 def csvwriter(product):
-    with open('products.csv', 'a', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow([product])
+    with open('products.csv', 'a', newline='', encoding='utf-8') as csvfile:
+        writer = csv.writer(csvfile, delimiter=';')
+        writer.writerow(product)
 
 number_of_products = len(products_clean_text)
 print("number of products " + str(number_of_products))
